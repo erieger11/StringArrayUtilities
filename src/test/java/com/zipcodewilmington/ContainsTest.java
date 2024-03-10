@@ -13,6 +13,4 @@ public class ContainsTest {
             Assert.assertTrue(outcome);
         }
     }
-
-
 }

@@ -25,7 +25,7 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+        return array[array.length-1];
     }
 
     /**
@@ -33,7 +33,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        return array[array.length-2];
     }
 
     /**
@@ -42,7 +42,10 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return false;
+        for(String i : array)
+            if(i.equals(value)) {
+                return true;
+            }return false;
     }
 
     /**
@@ -50,7 +53,11 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        String[] reversedArray = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            reversedArray[i] = reverse(array[i]);
+        }
+        return reversedArray;
     }
 
     /**
@@ -58,7 +65,11 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        String[] reversedArray = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            reversedArray[i] = reverse(array[i]);
+        }
+        return array == reversedArray;
     }
 
     /**
@@ -66,6 +77,16 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
+        String[] letters = new String[]{"a","b","c","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t",
+                "u","v","w","x","y","z" };
+
+        for (int i = 0; i < array.length ; i++) {
+            for (int j = 0; j <letters.length ; j++) {
+                if(array[i]==letters[j]);
+            }
+            return true
+        }
+
         return false;
     }
 
