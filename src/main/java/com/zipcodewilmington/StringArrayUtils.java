@@ -1,9 +1,6 @@
 package com.zipcodewilmington;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Created by leon on 1/29/18.
@@ -86,17 +83,17 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        ArrayList<String> pangramic = new ArrayList<>(Arrays.asList(array));
-        int letters = 0;
-        for (int i = 0; i < pangramic.size(); i++) {
-            if(pangramic.get(i).equals('a')){
-                letters ++;
+    Set<Character> letters = new HashSet<>();
+        for(String str : array) {
+            for(char c :str.toLowerCase().toCharArray()) {
+                if(Character.isLetter(c)) {
+                    letters.add(c);
+
+
+                }
             }
-        }
-
-
-
-        return letters >= 26;
+         }
+        return letters.size() >= 26;
     }
 
     /**
