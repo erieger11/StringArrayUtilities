@@ -76,9 +76,9 @@ public class StringArrayUtils {
 
             reversedArray.add(array[i]);
         }
-        reversedArray.toArray(new String[0]);
+        String[] finalReversedArray =  reversedArray.toArray(new String[0]);
 
-        return array.equals(reversedArray);
+        return Arrays.equals(array, finalReversedArray);
     }
 
     /**
@@ -86,7 +86,17 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        ArrayList<String> pangramic = new ArrayList<>(Arrays.asList(array));
+        int letters = 0;
+        for (int i = 0; i < pangramic.size(); i++) {
+            if(pangramic.get(i).equals('a')){
+                letters ++;
+            }
+        }
+
+
+
+        return letters >= 26;
     }
 
     /**
@@ -95,7 +105,12 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int numberOfOcc = 0;
+        for(String i : array)
+            if(i.equals(value)) {
+                numberOfOcc ++;
+            }
+        return numberOfOcc;
     }
 
     /**
@@ -129,8 +144,20 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+
+        List<String> addingDuplicates = new ArrayList<>(Arrays.asList(array));
+        for (int i = 0; i < addingDuplicates.size()-1; i++) {
+            if (addingDuplicates.get(i).charAt(0) == addingDuplicates.get(i + 1).charAt(0)){
+                addingDuplicates.set(i,addingDuplicates.get(i) + addingDuplicates.get(i + 1));
+                addingDuplicates.remove(i+1);
+                i --;
+            }
+        }
+        return addingDuplicates.toArray(new String[0]);
     }
+
+
+
 
 
 }
